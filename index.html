@@ -1,38 +1,79 @@
-<html>
-  <head>
-    <title>Hello World!</title>
-    <style>
-      html, body {
-        margin:0;
-        width: 100%;
-        height: 100%;
-      }
-      .container {
-        display: flex;
-        width: 100%;
-        height: 100%;
-        align-content: center;
-        align-items: center;
-        justify-content: center;
-      }
+<!DOCTYPE html>
+<html lang="en">
 
-      h1 {
-        font-family: "Helvetica", sans-serif;
-        font-size: 72pt;
-        color: crimson;
-        transition: .75s ease;
-      }
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Archive | Shiv | Interaction Lab</title>
+  <link rel="stylesheet" type="text/css" href="assets/style.css" />
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+</head>
 
-      h1:hover {
-        color: cornflowerblue;
-        transform: translateY(-25px);
-      }
-    </style>
-  </head>
-
-  <body>
-    <div class="container">
-      <h1>Hello World!</h1>
+<body id="body" class="">
+  <div class="mobile-message">
+    <div class="error-container">
+      <i class="fas fa-exclamation-triangle" style="color: #AA3F39; font-size: 8em;"></i>
+      <p>This website is not optomized for Mobile. Please access this on your desktop.</p>
     </div>
-  </body>
+  </div>
+  <div class="logo-wrapper" id="menu">
+    <div id="nav-icon">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="inner-logo-wrapper">
+      <img src="assets/images/logo.png" alt="logo" class="logo" onclick="location.reload(); location.href='index.html'">
+    </div>
+    <div class="switch">
+      <input type="checkbox" id="switch" autocomplete="off" /><label for="switch">Toggle</label>
+    </div>
+  </div>
+  <!-- <div class="helvetica"></div>
+    <div class="ff-bau"></div>
+    <div class="hereisny"></div>
+    <div class="gamedesign"></div>
+    <div class="altitude"></div>
+    <div class="flatland"></div> -->
+  <a href="helveticanism.html"><img src="assets/images/home-helveticanism.png" class="helvetica" /></a>
+  <a href="ff-bau.html"><img src="assets/images/home-bau.png" class="ff-bau" /></a>
+  <a href="hereisny.html"><img src="assets/images/home-hereisny.png" class="hereisny" /></a>
+  <a href="gamedesign.html"><img src="assets/images/home-gamedesign.png" class="gamedesign" /></a>
+  <a href="altitude.html"><img src="assets/images/home-altitude.png" class="altitude" /></a>
+  <a href="flatland.html"><img src="assets/images/home-flatland.png" class="flatland" /></a>
+
+  <!-- <div class="footer-container">
+  <div class="social-icons">
+    <a href="#" target="_blank" class="social-icons-spacer"><i class="fab fa-dribbble" style="color: black"></i></a>
+    <a href="#" target="_blank" class="social-icons-spacer"><i class="fab fa-behance" style="color: black"></i></a>
+    <a href="#" target="_blank" class="social-icons-spacer"><i class="fab fa-instagram" style="color: black"></i></a>
+  </div>
+  <div class="copyright">&copy; Shivam Sinha 2018</div>
+</div> -->
+</body>
+<script>
+  $(document).ready(function() {
+    $('#nav-icon').click(function() {
+      $(this).toggleClass('open');
+      $('.helvetica, .ff-bau, .hereisny, .gamedesign, .altitude, .flatland').toggleClass('menu-trigger');
+    });
+    $('#switch').click(function() {
+      $('body').toggleClass('dark');
+    });
+  });
+</script>
+<script>
+  $(function() {
+    $('.helvetica, .ff-bau, .hereisny, .gamedesign, .altitude, .flatland').hover(function() {
+      $('.logo-wrapper').css('opacity', '0');
+    }, function() {
+      // on mouseout, reset the opacity
+      $('.logo-wrapper').css('opacity', '1');
+    });
+  });
+</script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
 </html>
