@@ -10,22 +10,39 @@
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 </head>
 
-<body id="body" class="" style="overflow-y: visible; background: #A2A6AB;">
+<body class="animsition" style="overflow-y: visible; background: #A2A6AB;">
   <div class="mobile-message">
     <div class="error-container">
       <i class="fas fa-exclamation-triangle" style="color: #AA3F39; font-size: 8em;"></i>
       <p>This website is not optomized for Mobile. Please access this on your desktop.</p>
     </div>
   </div>
+  <div class="social-container">
+      <div>
+        <a href="#" target="_blank"><i class="fab fa-dribbble social-icons"></i></a>
+      </div>
+      <div>
+        <a href="#" target="_blank"><i class="fab fa-behance social-icons"></i></a>
+      </div>
+      <div>
+        <a href="#" target="_blank"><i class="fab fa-instagram social-icons"></i></a>
+      </div>
+    <p class="copyright">&copy; Shivam Sinha 2018</p>
+  </div>
   <div class="logo-wrapper" id="menu">
     <div>
-      <i class="fas fa-chevron-left" style="font-size: 2em; position: fixed; left: 3%; top: 5%; cursor: pointer" onclick="location.reload(); location.href='index.html'"></i>
+      <a href="index.html" class="animsition-link" data-animsition-out-class="fade-out-right">
+        <i class="fas fa-chevron-left" style="font-size: 2em; position: fixed; left: 3%; top: 5%; cursor: pointer;" ></i>
+      </a>
     </div>
     <div class="inner-logo-wrapper">
       <img src="assets/images/logo.png" alt="logo" class="logo" onclick="location.reload(); location.href='index.html'">
     </div>
-    <div class="switch">
-      <input type="checkbox" id="switch" autocomplete="off" /><label for="switch">Toggle</label>
+    <div id="nav-icon" class="social">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
   </div>
   <img src="assets/images/ff-bau/01.png" class="project-img" />
@@ -43,5 +60,42 @@
   <img src="assets/images/ff-bau/poster.png" class="project-img" />
 </body>
 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+<!-- animsition.css -->
+<link rel="stylesheet" href="assets/dist/css/animsition.min.css">
+<!-- animsition.js -->
+<script src="assets/dist/js/animsition.min.js"></script>
+<script>
+$(document).ready(function() {
+$(".animsition").animsition({
+  inClass: 'fade-in',
+  outClass: 'fade-out',
+  inDuration: 800,
+  outDuration: 800,
+  linkElement: '.animsition-link',
+  // e.g. linkElement: 'a:not([target="_blank"]):not([href^="#"])'
+  loading: false,
+  loadingParentElement: 'body', //animsition wrapper element
+  loadingClass: 'animsition-loading',
+  loadingInner: '', // e.g '<img src="loading.svg" />'
+  timeout: false,
+  timeoutCountdown: 5000,
+  onLoadEvent: true,
+  browser: [ 'animation-duration', '-webkit-animation-duration'],
+  // "browser" option allows you to disable the "animsition" in case the css property in the array is not supported by your browser.
+  // The default setting is to disable the "animsition" in a browser that does not support "animation-duration".
+  overlay : false,
+  overlayClass : 'animsition-overlay-slide',
+  overlayParentElement : 'body',
+  transition: function(url){ window.location.href = url; }
+});
+});
+</script>
+<script>
+$('.social').click(function() {
+  $(this).toggleClass('open');
+  $('.social-container').toggleClass('active');
+});
+</script>
 
 </html>

@@ -10,15 +10,33 @@
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 </head>
 
-<body id="body" class="">
+<body id="body" class="animsition">
+  <!-- Preloader -->
+	<div id="preloader">
+		<div id="status">&nbsp;</div>
+	</div>
+
   <div class="mobile-message">
     <div class="error-container">
       <i class="fas fa-exclamation-triangle" style="color: #AA3F39; font-size: 8em;"></i>
       <p>This website is not optomized for Mobile. Please access this on your desktop.</p>
     </div>
   </div>
+
+  <div class="social-container">
+      <div>
+        <a href="#" target="_blank"><i class="fab fa-dribbble social-icons"></i></a>
+      </div>
+      <div>
+        <a href="#" target="_blank"><i class="fab fa-behance social-icons"></i></a>
+      </div>
+      <div>
+        <a href="#" target="_blank"><i class="fab fa-instagram social-icons"></i></a>
+      </div>
+    <p class="copyright">&copy; Shivam Sinha 2018</p>
+  </div>
   <div class="logo-wrapper" id="menu">
-    <div id="nav-icon">
+    <div id="nav-icon" class="menu-triggerer">
       <span></span>
       <span></span>
       <span></span>
@@ -27,8 +45,11 @@
     <div class="inner-logo-wrapper">
       <img src="assets/images/logo.png" alt="logo" class="logo" onclick="location.reload(); location.href='index.html'">
     </div>
-    <div class="switch">
-      <input type="checkbox" id="switch" autocomplete="off" /><label for="switch">Toggle</label>
+    <div id="nav-icon" class="social">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
   </div>
   <!-- <div class="helvetica"></div>
@@ -37,12 +58,12 @@
     <div class="gamedesign"></div>
     <div class="altitude"></div>
     <div class="flatland"></div> -->
-  <a href="helveticanism.html"><img src="assets/images/home-helveticanism.png" class="helvetica" /></a>
-  <a href="ff-bau.html"><img src="assets/images/home-bau.png" class="ff-bau" /></a>
-  <a href="hereisny.html"><img src="assets/images/home-hereisny.png" class="hereisny" /></a>
-  <a href="gamedesign.html"><img src="assets/images/home-gamedesign.png" class="gamedesign" /></a>
-  <a href="altitude.html"><img src="assets/images/home-altitude.png" class="altitude" /></a>
-  <a href="flatland.html"><img src="assets/images/home-flatland.png" class="flatland" /></a>
+  <a href="helveticanism.html" class="animsition-link" data-animsition-out-class="zoom-out"><img src="assets/images/home-helveticanism.png" class="helvetica" /></a>
+  <a href="ff-bau.html" class="animsition-link" data-animsition-out-class="zoom-out"><img src="assets/images/home-bau.png" class="ff-bau" /></a>
+  <a href="hereisny.html" class="animsition-link" data-animsition-out-class="zoom-out"><img src="assets/images/home-hereisny.png" class="hereisny" /></a>
+  <a href="gamedesign.html" class="animsition-link" data-animsition-out-class="zoom-out"><img src="assets/images/home-gamedesign.png" class="gamedesign" /></a>
+  <a href="altitude.html" class="animsition-link" data-animsition-out-class="zoom-out"><img src="assets/images/home-altitude.png" class="altitude" /></a>
+  <a href="flatland.html" class="animsition-link" data-animsition-out-class="zoom-out"><img src="assets/images/home-flatland.png" class="flatland" /></a>
 
   <!-- <div class="footer-container">
   <div class="social-icons">
@@ -53,14 +74,31 @@
   <div class="copyright">&copy; Shivam Sinha 2018</div>
 </div> -->
 </body>
+<!-- animsition.css -->
+<link rel="stylesheet" href="assets/dist/css/animsition.min.css">
+<!-- animsition.js -->
+<script src="assets/dist/js/animsition.min.js"></script>
+<!-- Preloader -->
+<script type="text/javascript">
+  //<![CDATA[
+  $(window).on('load', function() { // makes sure the whole site is loaded
+    $('#status').fadeOut(); // will first fade out the loading animation
+    $('#preloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website.
+    $('body').delay(350).css({
+      'overflow': 'visible'
+    });
+  })
+  //]]>
+</script>
 <script>
   $(document).ready(function() {
-    $('#nav-icon').click(function() {
+    $('.menu-triggerer').click(function() {
       $(this).toggleClass('open');
       $('.helvetica, .ff-bau, .hereisny, .gamedesign, .altitude, .flatland').toggleClass('menu-trigger');
     });
-    $('#switch').click(function() {
-      $('body').toggleClass('dark');
+    $('.social').click(function() {
+      $(this).toggleClass('open');
+      $('.social-container').toggleClass('active');
     });
   });
 </script>
@@ -75,5 +113,31 @@
   });
 </script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<script>
+$(document).ready(function() {
+$(".animsition").animsition({
+  inClass: 'fade-in',
+  outClass: 'fade-in',
+  inDuration: 800,
+  outDuration: 800,
+  linkElement: '.animsition-link',
+  // e.g. linkElement: 'a:not([target="_blank"]):not([href^="#"])'
+  loading: false,
+  loadingParentElement: 'body', //animsition wrapper element
+  loadingClass: 'animsition-loading',
+  loadingInner: '', // e.g '<img src="loading.svg" />'
+  timeout: false,
+  timeoutCountdown: 5000,
+  onLoadEvent: true,
+  browser: [ 'animation-duration', '-webkit-animation-duration'],
+  // "browser" option allows you to disable the "animsition" in case the css property in the array is not supported by your browser.
+  // The default setting is to disable the "animsition" in a browser that does not support "animation-duration".
+  overlay : false,
+  overlayClass : 'animsition-overlay-slide',
+  overlayParentElement : 'body',
+  transition: function(url){ window.location.href = url; }
+});
+});
+</script>
 
 </html>

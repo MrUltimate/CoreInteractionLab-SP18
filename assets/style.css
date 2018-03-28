@@ -15,6 +15,12 @@ body {
   background-color: var(--body-bg);
   background-size: cover;
   overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+a {
+  color: black;
 }
 
 .dark {
@@ -32,6 +38,36 @@ body {
   html, body {
     background: url('images/base.png') center center no-repeat!important;
   }
+}
+
+/* Preloader */
+#preloader {
+	position: absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	background-color:#fff; /* change if the mask should be a color other than white */
+	z-index:999; /* makes sure it stays on top */
+}
+
+#status {
+	width:200px;
+	height:200px;
+	position:absolute;
+	left:50%; /* centers the loading animation horizonttransformy on the screen */
+	top:50%; /* centers the loading animation vertictransformy on the screen */
+	background-image:url(status.gif); /* path to your loading animation */
+	background-repeat:no-repeat;
+	background-position:center;
+	margin:-100px 0 0 -100px; /* is width and height divided by two */
+}
+
+#particles-js{
+  background-color: #202020;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat no-repeat;
 }
 
 body {
@@ -54,7 +90,7 @@ body {
   grid-template-columns: 1fr 4fr 1fr;
   grid-auto-rows: 65px;
   padding-top: 20px;
-  z-index: 0;
+  z-index: 101;
   visibility: visible;
   transition: .5s ease-in;
   /* background-color: var(--body-bg); */
@@ -109,6 +145,7 @@ body {
   -o-transition: .5s ease-in-out;
   transition: .5s ease-in-out;
   cursor: pointer;
+  z-index: 101;
 }
 
 #nav-icon span {
@@ -165,6 +202,10 @@ body {
   top: 18px;
   width: 0%;
   left: 50%;
+}
+
+#nav-icon.white span {
+  background: white!important;
 }
 
 /* @keyframes shake {
@@ -410,7 +451,7 @@ label:active:after {
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	z-index: 2;
+	z-index: 1000;
 	background: #CC4840;
 	visibility: hidden;
 	transition: all .25s ease;
@@ -447,17 +488,14 @@ label:active:after {
 
 /* Footer */
 
-.footer-container {
-  display: flex;
-  width: 100%;
-  height: 150px;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
 .copyright {
   /* width: 100%; */
+  position: fixed!important;
+  bottom: 3%;
+  left: 46%;
+  font-family: 'Helvetica', sans-serif;
+  font-size: 12pt;
+  color: black;
 }
 
 .social-icons-spacer {
@@ -466,4 +504,51 @@ label:active:after {
 
 .project-img {
   max-width: 100%;
+}
+
+.social-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: RGBA(255, 255, 255, .75);
+  height: 100%;
+  width: 100%;
+  z-index: 99;
+  visibility: hidden;
+  transition: opacity .25s ease-in-out;
+  opacity: 0;
+}
+
+.black-bg {
+  background-color: RGBA(0, 0, 0, .75)!important;
+}
+
+.white {
+  color: white!important;
+}
+
+.active {
+  visibility: visible!important;
+  opacity: 1!important;
+}
+
+.social-container > div {
+  padding: 50px;
+}
+
+.social-icons {
+  font-size: 42pt;
+  color: black;
+  transition: all .25s ease;
+}
+
+.social-icons:hover {
+  transform: scale(1.5);
+}
+
+.social {
+  transform: rotate(90deg)!important;
 }
